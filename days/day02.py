@@ -4,7 +4,7 @@ from solution.base import SolutionBase
 class Solution(SolutionBase):
     def __init__(self):
         super().__init__()
-        data = self.load_data("day02")
+        self.data = self.load_data("day02")
 
     def part1(self) -> int:
         raise NotImplementedError()

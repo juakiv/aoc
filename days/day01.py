@@ -5,12 +5,12 @@ from collections import Counter
 class Solution(SolutionBase):
     def __init__(self):
         super().__init__()
-        data = self.load_data("day01")
+        self.data = self.load_data("day01")
 
         self.list1: list[int] = []
         self.list2: list[int] = []
 
-        for pair in data:
+        for pair in self.data:
             [a, b] = pair.split("   ")
             self.list1.append(int(a))
             self.list2.append(int(b))
