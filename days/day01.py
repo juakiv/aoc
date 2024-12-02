@@ -11,7 +11,7 @@ class Solution(SolutionBase):
         self.list2: list[int] = []
 
         for pair in self.data:
-            [a, b] = pair.split("   ")
+            a, b = pair.split()
             self.list1.append(int(a))
             self.list2.append(int(b))
 
