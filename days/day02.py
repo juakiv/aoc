@@ -12,21 +12,22 @@ class Solution(SolutionBase):
 
         for a, b in zip(levels[:-1], levels[1:]):
             if should_increase and a > b or not should_increase and a < b or not (1 <= abs(a - b) <= 3):
-                return False
+                return 0
 
-        return True
+        return 1
 
     def part1(self) -> int:
         safe_count = 0
 
         for report in self.data:
             levels = [int(level) for level in report.split()]
-            safe_count += int(self.is_safe_report(levels))
+            safe_count += self.is_safe_report(levels)
 
         return safe_count
 
     def part2(self) -> int:
         dampened_safe_count = 0
+
         for report in self.data:
             levels = [int(level) for level in report.split()]
             is_safe = self.is_safe_report(levels)
@@ -34,7 +35,7 @@ class Solution(SolutionBase):
             for i in range(len(levels)):
                 is_safe = is_safe or self.is_safe_report([x for idx, x in enumerate(levels) if idx != i])
 
-            dampened_safe_count += int(is_safe)
+            dampened_safe_count += is_safe
 
         return dampened_safe_count
 
