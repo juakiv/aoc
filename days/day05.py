@@ -17,6 +17,13 @@ class Solution(SolutionBase):
             if "|" in line:
                 self.rules.append(line.split("|"))
 
+    def check_validity(self, update: list[int]) -> bool:
+        for rule_left, rule_right in self.rules:
+            if rule_left in update and rule_right in update and update.index(rule_left) > update.index(rule_right):
+                return False
+
+        return True
+
     def reorder(self, update: list[int]) -> list[int]:
         if len(update) <= 1:
             return update
@@ -37,10 +44,7 @@ class Solution(SolutionBase):
         sum_of_middle_numbers = 0
 
         for update in self.updates:
-            for rule_left, rule_right in self.rules:
-                if rule_left in update and rule_right in update and update.index(rule_left) > update.index(rule_right):
-                    break
-            else:
+            if self.check_validity(update):
                 sum_of_middle_numbers += int(update[len(update) // 2])
 
         return sum_of_middle_numbers
@@ -49,11 +53,8 @@ class Solution(SolutionBase):
         sum_of_middle_numbers = 0
 
         for update in self.updates:
-            for rule_left, rule_right in self.rules:
-                if rule_left in update and rule_right in update and update.index(rule_left) > update.index(rule_right):
-                    sorted_update = self.reorder(update)
-                    sum_of_middle_numbers += int(sorted_update[len(sorted_update) // 2])
-                    break
+            if not self.check_validity(update):
+                sum_of_middle_numbers += int(self.reorder(update)[len(update) // 2])
 
         return sum_of_middle_numbers
 
