@@ -4,7 +4,7 @@ class SolutionBase:
         with open(f"../inputs/{file}.txt", 'r') as f:
             return [line.rstrip() for line in f.readlines()]
 
-    def part1(self) -> int:
+    def part1(self) -> int | str:
         raise NotImplementedError
 
     def part2(self) -> int:
