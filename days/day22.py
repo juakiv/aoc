@@ -1,5 +1,4 @@
 from collections import defaultdict
-from typing import Tuple
 
 from solution.base import SolutionBase
 
