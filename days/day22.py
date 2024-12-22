@@ -9,8 +9,9 @@ class Solution(SolutionBase):
         super().__init__()
         self.data = self.load_data("day22")
 
-    @staticmethod
-    def calculate_secret_number(initial: int, times: int) -> Tuple[int, list[int]]:
+        self.prices: list[list[int]] = []
+
+    def calculate_secret_number(self, initial: int, times: int) -> int:
         secret = initial
         price: list[int] = []
 
@@ -21,14 +22,15 @@ class Solution(SolutionBase):
 
             price.append(secret % 10)
 
-        return secret, price
+        self.prices.append(price)
+
+        return secret
 
     def part1(self) -> int:
-        return sum(self.calculate_secret_number(int(num), 2000)[0] for num in self.data)
+        return sum(self.calculate_secret_number(int(num), 2000) for num in self.data)
 
     def part2(self) -> int:
-        prices = [self.calculate_secret_number(int(num), 2000)[1] for num in self.data]
-        differences = [[b - a for a, b in zip(price, price[1:])] for price in prices]
+        differences = [[b - a for a, b in zip(price, price[1:])] for price in self.prices]
 
         result = defaultdict(int)
 
@@ -38,7 +40,7 @@ class Solution(SolutionBase):
                 pattern = tuple(diffs[j:j + 4])
                 if pattern not in seen_pattern:
                     seen_pattern.add(pattern)
-                    result[pattern] += prices[i][j + 4]
+                    result[pattern] += self.prices[i][j + 4]
 
         return max(result.values())
 
