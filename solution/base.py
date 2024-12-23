@@ -7,7 +7,7 @@ class SolutionBase:
     def part1(self) -> int | str:
         raise NotImplementedError
 
-    def part2(self) -> int:
+    def part2(self) -> int | str:
         raise NotImplementedError
 
     def run(self):
