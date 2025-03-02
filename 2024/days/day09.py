@@ -19,7 +19,7 @@ class Solution(SolutionBase):
                 file_id += 1
             else:
                 for _ in range(int(self.data[i])):
-                    self.uncompressed.append(".")
+                    self.uncompressed.append("")
 
         self.total_files = file_id
 

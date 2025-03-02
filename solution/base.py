@@ -1,7 +1,7 @@
 class SolutionBase:
     @staticmethod
-    def load_data(file: str) -> list:
-        with open(f"../inputs/{file}.txt", 'r') as f:
+    def load_data(file: str, year: int = 2024) -> list:
+        with open(f"../../{year}/inputs/{file}.txt", 'r') as f:
             return [line.rstrip() for line in f.readlines()]
 
     def part1(self) -> int | str:
