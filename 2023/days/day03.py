@@ -17,7 +17,7 @@ class Solution(SolutionBase):
                 self.numbers.append([index, num_start, num_end, number])
 
     @staticmethod
-    def is_symbol(chars: str) -> bool:
+    def is_symbol_in_chars(chars: str) -> bool:
         return any(char != "." and not char.isdigit() for char in chars)
 
     def part1(self) -> int:
@@ -29,10 +29,10 @@ class Solution(SolutionBase):
             num_end_index = min(len(self.data[line_index]) - 1, number[2])
             num_value = number[3]
 
-            if (self.is_symbol(self.data[line_index][max(0, num_start_index)])) or \
-                (num_end_index <= len(self.data[line_index]) and self.is_symbol(self.data[line_index][num_end_index])) or \
-                (line_index - 1 >= 0 and self.is_symbol(self.data[line_index - 1][num_start_index:num_end_index + 1])) or \
-                (line_index + 1 < len(self.data) and self.is_symbol(self.data[line_index + 1][num_start_index:num_end_index + 1])):
+            if (self.is_symbol_in_chars(self.data[line_index][max(0, num_start_index)])) or \
+                (num_end_index <= len(self.data[line_index]) and self.is_symbol_in_chars(self.data[line_index][num_end_index])) or \
+                (line_index - 1 >= 0 and self.is_symbol_in_chars(self.data[line_index - 1][num_start_index:num_end_index + 1])) or \
+                (line_index + 1 < len(self.data) and self.is_symbol_in_chars(self.data[line_index + 1][num_start_index:num_end_index + 1])):
                 total += num_value
 
         return total
