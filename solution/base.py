@@ -1,8 +1,8 @@
 class SolutionBase:
     @staticmethod
-    def load_data(file: str, year: int = 2024) -> list:
+    def load_data(file: str, year: int = 2024, split = "\n") -> list:
         with open(f"../../{year}/inputs/{file}.txt", 'r') as f:
-            return [line.rstrip() for line in f.readlines()]
+            return [line.rstrip() for line in f.read().split(split)]
 
     def part1(self) -> int | str:
         raise NotImplementedError
