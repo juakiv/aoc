@@ -17,7 +17,7 @@ class Solution(SolutionBase):
 
         heappush(queue, (cost + int(self.data[new_y][new_x]), (new_x, new_y, dir_x, dir_y), steps))
 
-    def djikstra(self, min_steps: int, max_steps: int) -> int:
+    def dijkstra(self, min_steps: int, max_steps: int) -> int:
         queue = [
             (0, (0, 0, 0, 0), 0)
         ]
@@ -46,10 +46,10 @@ class Solution(SolutionBase):
 
 
     def part1(self) -> int:
-        return self.djikstra(0, 3)
+        return self.dijkstra(0, 3)
 
     def part2(self) -> int:
-        return self.djikstra(4, 10)
+        return self.dijkstra(4, 10)
 
 
 if __name__ == '__main__':
