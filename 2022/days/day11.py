@@ -39,14 +39,14 @@ class Solution(SolutionBase):
                     monkey["times_inspected"] += 1
                     old_item = item
 
-                    if monkey["operation"][1] == '+':
-                        if monkey["operation"][2] == 'old':
+                    if monkey["operation"][1] == "+":
+                        if monkey["operation"][2] == "old":
                             item = old_item + old_item
                         else:
                             item = old_item + int(monkey["operation"][2])
 
-                    elif monkey["operation"][1] == '*':
-                        if monkey["operation"][2] == 'old':
+                    elif monkey["operation"][1] == "*":
+                        if monkey["operation"][2] == "old":
                             item = old_item * old_item
                         else:
                             item = old_item * int(monkey["operation"][2])
