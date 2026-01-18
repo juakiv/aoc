@@ -1,6 +1,11 @@
 class SolutionBase:
-    @staticmethod
-    def load_data(file: str, year: int = 2024, split = "\n") -> list:
+    def __init__(self):
+        self.is_test = False
+
+    def load_data(self, file: str, year: int = 2024, split = "\n") -> list:
+        if "test" in file:
+            self.is_test = True
+
         with open(f"../../{year}/inputs/{file}.txt", 'r') as f:
             return [line.rstrip() for line in f.read().split(split)]
 

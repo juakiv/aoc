@@ -34,9 +34,11 @@ class Solution(SolutionBase):
         return len(occupied_positions)
 
     def part1(self) -> int:
-        return self.free_positions(2_000_000)
+        return self.free_positions(2_000_000 if not self.is_test else 10)
 
     def part2(self) -> int:
+        limit = 4_000_000 if not self.is_test else 20
+
         for (sensor_x, sensor_y), (beacon_x, beacon_y) in self.sensor_beacon_pairs:
             distance = abs(sensor_x - beacon_x) + abs(sensor_y - beacon_y)
             perimeter_distance = distance + 1
@@ -52,7 +54,7 @@ class Solution(SolutionBase):
                 ]
 
                 for x, y in possible_positions:
-                    if 0 <= x <= 4_000_000 and 0 <= y <= 4_000_000:
+                    if 0 <= x <= limit and 0 <= y <= limit:
                         if all(abs(x - sx) + abs(y - sy) > abs(sx - bx) + abs(sy - by) for (sx, sy), (bx, by) in self.sensor_beacon_pairs):
                             return x * 4_000_000 + y
 
