@@ -16,5 +16,6 @@ class SolutionBase:
         raise NotImplementedError
 
     def run(self):
-        print("Part 1:", self.part1())
-        print("Part 2:", self.part2())
+        print(f"\033[{31 if self.is_test else 32}m\033[1m\033[4m--- RUNNING USING {"TEST" if self.is_test else "REAL"} INPUT ---\033[0m")
+        print("\033[1mPart 1:\033[0m", self.part1())
+        print("\033[1mPart 2:\033[0m", self.part2())
