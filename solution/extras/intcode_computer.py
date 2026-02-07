@@ -89,6 +89,6 @@ class IntcodeComputer:
                 raise ValueError(f"Unknown opcode {opcode}")
 
     def run_full(self):
-        while not self.halted:
+        while not self.halted and not self.waiting:
             self.run()
         return self.outputs
