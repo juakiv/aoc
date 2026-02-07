@@ -47,7 +47,7 @@ class Solution(SolutionBase):
         return painted, panels
 
     def part1(self) -> int:
-        return len(self.run_painter(self.nums.copy(), 0))
+        return len(self.run_painter(self.nums.copy(), 0)[0])
 
     def part2(self) -> str:
         _, panels = self.run_painter(self.nums.copy(), 1)
