@@ -29,15 +29,15 @@ class Solution(SolutionBase):
 
                 current_positions = new_positions
 
-            elif char == '(':
+            elif char == "(":
                 stack.append((set(current_positions), []))
 
-            elif char == '|':
+            elif char == "|":
                 start_positions, branch_positions = stack[-1]
                 branch_positions.extend(current_positions)
                 current_positions = set(start_positions)
 
-            elif char == ')':
+            elif char == ")":
                 start_positions, branch_positions = stack.pop()
                 branch_positions.extend(current_positions)
                 current_positions = set(branch_positions)
